@@ -11,6 +11,8 @@ for i in os.listdir("./data"):
     j=j+1
     continue
     '''
+    if os.path.isfile("./images/{}.jpg".format(i.split(".")[0])):
+        continue;
     image = Image.open("./data/{}".format(i))
     image.resize((1920,1080),Image.ANTIALIAS)
     black = Image.new("RGB",(1920,1080))
@@ -38,5 +40,6 @@ for i in os.listdir("./data"):
             )
         )
 
-    black.save("./images/{}.jpg".format(i),"jpeg")
+    black.save("./images/{}.jpg".format(i.split(".")[0]),"jpeg")
+    print("./images/{}".format(i.split(".")[0]))
     j+=1
